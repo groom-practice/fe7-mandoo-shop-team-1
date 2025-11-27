@@ -66,6 +66,8 @@ submitBtn.addEventListener("click", () => {
 
   existingOrders.push(order)
   localStorage.setItem("orders", JSON.stringify(existingOrders))
+  sessionStorage.removeItem("orderItem")
+
   alert("주문이 완료되었습니다.")
   window.location.href = "../index.html"
 })
