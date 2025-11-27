@@ -1,6 +1,5 @@
 import {CartView} from './view.js';
 import {Cart} from './model.js';
-import data from '../../db.json';
 
 const CartController = {
     cart: null,
