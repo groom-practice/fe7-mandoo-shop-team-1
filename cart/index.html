@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>장바구니</title>
+</head>
+
+<body>
+    <header>
+        <button class="back-btn" id="backBtn">뒤로가기</button>
+        <h1>장바구니</h1>
+    </header>
+
+    <div class='cart-container'>
+        <div class="cart-controls">
+            <label class="select-all-label">
+                <input type='checkbox' class='select-all-checkbox' id='selectAllCheckbox'>
+                <span>전체 선택</span>
+            </label>
+            <div class="cart-actions">
+                <button class="btn btn-danger" id="selectedDeleteBtn">선택 삭제</button>
+                <button class="btn btn-danger" id="allDeleteBtn">전체 삭제</button>
+            </div>
+        </div>
+
+        <ul class='cart-list' id="cartList">
+            <!-- 동적으로 렌더링됩니다 -->
+        </ul>
+
+        <div class="cart-empty hidden" id="cartEmpty">
+            <p>장바구니가 비어있습니다.</p>
+        </div>
+
+        <div class="cart-summary">
+            <div class="total-price">
+                <span>총 금액:</span>
+                <span class="price" id="totalPrice">0원</span>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./scripts/controller.js"></script>
+</body>
+
+</html>
