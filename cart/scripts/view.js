@@ -2,6 +2,21 @@ export const CartView = {
     render() {
     },
 
+    getTemplate(product) {
+        return `
+           <li class='cart-item' id='cart-item-${product.id}'>
+                <input type='checkbox' class='cart-item-checkbox' id='cart-item-checkbox-${product.id}'>
+                <label for='cart-item-checkbox-${product.id}'>
+                    <img src='../imgs/${product.productImgFileName}' alt='${product.productName}-${product.id}'>
+                    <div class='cart-item-info'>
+                        <h3>${product.productName}</h3>
+                        <p>${product.productPrice.toLocaleString()}원</p>
+                    </div>
+                </label>
+            </li>
+        `;
+    },
+
     /**
      * 장바구니 리스트 업데이트
      * @param {object[]} items 
@@ -13,19 +28,7 @@ export const CartView = {
             return;
         }
 
-        cartList.innerHTML = items.map((item) => `
-            <li class='cart-item' id='cart-item-${item.id}'>
-                <input type='checkbox' class='cart-item-checkbox' id='cart-item-checkbox-${item.id}'>
-                <label for='cart-item-checkbox-${item.id}'>
-                    <img src='../imgs/${item.productImgFileName}' alt='${item.productName}-${item.id}'>
-                    <div class='cart-item-info'>
-                        <h3>${item.productName}</h3>
-                        <p>${item.productPrice.toLocaleString()}원</p>
-                    </div>
-                </label>
-            </li>
-        `).join('');
-
+        cartList.innerHTML = items.map(this.getTemplate).join('');
     },
 
     /**
