@@ -3,7 +3,7 @@ const inputUserPw = document.getElementById("inputUserPw")
 const inputUserName = document.getElementById("inputUserName")
 const signupBtn = document.getElementById("signup");
 
-// 입력받은 정보 set
+// 유저 정보 입력받기
 inputUserId.addEventListener("change", e => {
   signupUserInfo.setId(e.target.value);
 });
@@ -17,8 +17,6 @@ inputUserName.addEventListener("change", e => {
 });
 
 //유효성 검사
-
-// 공백값 체크
 signupBtn.addEventListener("click", () => {
   if(signupUserInfo.id === ""){
     alert("아이디를 입력하세요");
@@ -38,13 +36,15 @@ signupBtn.addEventListener("click", () => {
     return;
   }
 
-  // 회원가입 확인
+  // 회원가입 확인하고 로그인 페이지로 이동
   const isConfirm = confirm(`id => ${signupUserInfo.id} \npw => ${signupUserInfo.pw} \nname => ${signupUserInfo.username} \n입력하신 정보가 정확한지 확인해주세요`);
   
   if(isConfirm){
     alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
     const userInfo = JSON.parse(localStorage.getItem("signupUserInfo")) ?? [];
     const newUserInfo = [...userInfo, signupUserInfo]
+    
+    //로컬 스토리지에 유저 회원가입 정보 저장
     localStorage.setItem("signupUserInfo", JSON.stringify(newUserInfo));
     location.href="../login/index.html";
   } else {
