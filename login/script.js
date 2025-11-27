@@ -24,7 +24,8 @@ inputLoginPw.addEventListener("change", e => {
 });
 
 //유효성 검사
-loginBtn.addEventListener("click", () => {
+loginBtn.addEventListener("click", (event) => {
+  event.preventDefault();
   if(loginId === ""){
     alert("아이디를 입력해주세요");
     inputLoginId.focus();
@@ -48,5 +49,5 @@ loginBtn.addEventListener("click", () => {
   localStorage.setItem("isLogin", JSON.stringify(isLogin));
 
   alert(`${signupUserInfos.filter((user) => user.id === loginId)[0].username}님 환영합니다!`);
-  location.href = "../index.html";
+  window.history.back();
 })
